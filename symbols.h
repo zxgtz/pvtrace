@@ -18,9 +18,9 @@
 typedef struct {
     unsigned int address;
     char funcName[MAX_FUNCTION_NAME+1];
-	__u64 ns; //NanoSecond
-	__u64 nsMax;
-	__u64 nsMin;
+    __u64 ns; //NanoSecond
+    __u64 nsMax;
+    __u64 nsMin;
 } func_t;
 
 

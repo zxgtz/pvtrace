@@ -13,8 +13,8 @@
 #include <linux/types.h>
 
 typedef struct {
-	int addr;
-	__u64 ns;
+    int addr;
+    __u64 ns;
 } TPopItem;
 
 void stackInit( void );

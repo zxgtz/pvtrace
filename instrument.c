@@ -23,12 +23,12 @@ void __cyg_profile_func_exit(void *, void *)  __attribute__ ((no_instrument_func
 ///////////////////////////////////////////////////////////////////////////////
 __attribute__ ((no_instrument_function))
 long long now_ns_hex(){
-	struct timespec tm;
-	if(0==clock_gettime(CLOCK_MONOTONIC, &tm)){
-		return ((long long)tm.tv_sec << 32) | tm.tv_nsec;
-	} else {
-		return 0;
-	}
+    struct timespec tm;
+    if(0==clock_gettime(CLOCK_MONOTONIC, &tm)){
+        return ((long long)tm.tv_sec << 32) | tm.tv_nsec;
+    } else {
+        return 0;
+    }
 }
 ///////////////////////////////////////////////////////////////////////////////
 

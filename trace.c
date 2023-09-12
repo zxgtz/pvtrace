@@ -40,28 +40,28 @@ int main( int argc, char *argv[] )
         printf("Can't open trace.txt\n");
         exit(-1);
     }
-	
+    
     if (feof(tracef)) {
         printf("ERROR of trace.txt\n");
-		exit(-2);
-	}
+        exit(-2);
+    }
 
 
-	//main函数需要特殊处理，先记下进入时刻,以备后续计算总的运行时间。
-	fscanf( tracef, "%c0x%x %llx\n", &type, &address, &nano_hex );
+    //main函数需要特殊处理，先记下进入时刻,以备后续计算总的运行时间。
+    fscanf( tracef, "%c0x%x %llx\n", &type, &address, &nano_hex );
 
-	if (type == 'E') {
-		addSymbol( address );
-		//printf(">>stackNumElems():%d\n", stackNumElems());
-		if(stackNumElems() == 0){
-			//main函数需要特殊处理，先记下进入时刻,以备后续计算总的运行时间。
-			setFuncTime(address, nano_hex);
-		}
+    if (type == 'E') {
+        addSymbol( address );
+        //printf(">>stackNumElems():%d\n", stackNumElems());
+        if(stackNumElems() == 0){
+            //main函数需要特殊处理，先记下进入时刻,以备后续计算总的运行时间。
+            setFuncTime(address, nano_hex);
+        }
 
-		addCallTrace( address );
-		stackPush( address, nano_hex );
-	}
-	
+        addCallTrace( address );
+        stackPush( address, nano_hex );
+    }
+    
 
     while (!feof(tracef)) {
 
@@ -82,7 +82,7 @@ int main( int argc, char *argv[] )
             /* Function Exit */
 
             TPopItem popItem = stackPop(nano_hex);
-			setFuncTime(popItem.addr, popItem.ns);
+            setFuncTime(popItem.addr, popItem.ns);
         }
 
     }
