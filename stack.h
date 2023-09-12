@@ -10,15 +10,23 @@
 #ifndef __STACK_H
 #define __STACK_H
 
+#include <linux/types.h>
+
+typedef struct {
+	int addr;
+	__u64 ns;
+} TPopItem;
+
 void stackInit( void );
 
 int stackNumElems( void );
 
 unsigned int stackTop( void );
 
-void stackPush( unsigned int value );
+void stackPush( unsigned int value, __u64 nano_hex );
 
-unsigned int stackPop( void );
+
+TPopItem stackPop( __u64 nano_hex );
 
 #endif /* __STACK_H */
 

@@ -1,0 +1,52 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+CC	Makefile	/^CC = gcc$/;"	m
+MAX_ELEMENTS	stack.c	14;"	d	file:
+MAX_FUNCTIONS	symbols.h	15;"	d
+MAX_FUNCTION_NAME	symbols.h	16;"	d
+OBJS	Makefile	/^OBJS = trace.o symbols.o stack.o$/;"	m
+TPopItem	stack.h	/^} TPopItem;$/;"	t	typeref:struct:__anon2
+TStackItem	stack.c	/^} TStackItem;$/;"	t	typeref:struct:__anon1	file:
+__STACK_H	stack.h	11;"	d
+__SYMBOLS_H	symbols.h	11;"	d
+__cyg_profile_func_enter	instrument.c	/^void __cyg_profile_func_enter( void *this, void *callsite )$/;"	f
+__cyg_profile_func_exit	instrument.c	/^void __cyg_profile_func_exit( void *this, void *callsite )$/;"	f
+addCallTrace	symbols.c	/^void addCallTrace( unsigned int address )$/;"	f
+addSymbol	symbols.c	/^void addSymbol( unsigned int address )$/;"	f
+addr	stack.h	/^	int addr;$/;"	m	struct:__anon2
+address	symbols.h	/^    unsigned int address;$/;"	m	struct:__anon3
+calls	symbols.c	/^unsigned int calls[MAX_FUNCTIONS][MAX_FUNCTIONS];$/;"	v
+emitSymbols	symbols.c	/^void emitSymbols( __u64 nano_hex_max )$/;"	f
+fp	instrument.c	/^static FILE *fp;$/;"	v	file:
+funcName	symbols.h	/^    char funcName[MAX_FUNCTION_NAME+1];$/;"	m	struct:__anon3
+func_t	symbols.h	/^} func_t;$/;"	t	typeref:struct:__anon3
+functions	symbols.c	/^func_t       functions[MAX_FUNCTIONS];$/;"	v
+imageName	symbols.c	/^char imageName[50];$/;"	v
+index	stack.c	/^static int index;$/;"	v	file:
+initSymbol	symbols.c	/^void initSymbol( char *image )$/;"	f
+lookupSymbol	symbols.c	/^int lookupSymbol( unsigned int address )$/;"	f
+main	trace.c	/^int main( int argc, char *argv[] )$/;"	f
+main_constructor	instrument.c	/^void main_constructor( void )$/;"	f
+main_deconstructor	instrument.c	/^void main_deconstructor( void )$/;"	f
+now_ns_hex	instrument.c	/^long long now_ns_hex(){$/;"	f
+ns	stack.c	/^	__u64 ns; \/\/NanoSeconds$/;"	m	struct:__anon1	file:
+ns	stack.h	/^	__u64 ns;$/;"	m	struct:__anon2
+ns	symbols.h	/^	__u64 ns; \/\/NanoSecond$/;"	m	struct:__anon3
+nsMax	symbols.h	/^	__u64 nsMax;$/;"	m	struct:__anon3
+nsMin	symbols.h	/^	__u64 nsMin;$/;"	m	struct:__anon3
+reverse	symbols.c	/^void reverse(char *str, int len) {$/;"	f
+setFloatStr	symbols.c	/^void setFloatStr(double vlu, char *str) {$/;"	f
+setFuncTime	symbols.c	/^void setFuncTime( int addr, __u64 ns ){$/;"	f
+stack	stack.c	/^static TStackItem stack[MAX_ELEMENTS];$/;"	v	file:
+stackInit	stack.c	/^void stackInit( void )$/;"	f
+stackNumElems	stack.c	/^int stackNumElems( void )$/;"	f
+stackPop	stack.c	/^TPopItem stackPop( __u64 nano_hex )$/;"	f
+stackPush	stack.c	/^void stackPush( unsigned int value, __u64 nano_hex )$/;"	f
+stackTop	stack.c	/^unsigned int stackTop( void )$/;"	f
+totals	symbols.c	/^unsigned int totals[MAX_FUNCTIONS];$/;"	v
+translateFunctionFromSymbol	symbols.c	/^int translateFunctionFromSymbol( unsigned int address, char *func )$/;"	f
+value	stack.c	/^	int value;$/;"	m	struct:__anon1	file:

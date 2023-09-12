@@ -8,54 +8,75 @@
  */
 
 #include <assert.h>
+#include <stdio.h>
+#include "stack.h"
 
-#define MAX_ELEMENTS	50
+#define MAX_ELEMENTS    50
 
-static int stack[MAX_ELEMENTS];
+typedef struct {
+	int value;
+	__u64 ns; //NanoSeconds
+} TStackItem;
+
+//static int stack[MAX_ELEMENTS];
+static TStackItem stack[MAX_ELEMENTS];
 static int index;
 
 void stackInit( void )
 {
-  index = 0;
+    index = 0;
 
-  return;
+    return;
 }
 
 
 int stackNumElems( void )
 {
-  return index;
+    return index;
 }
 
 
 unsigned int stackTop( void )
 {
-  assert( index > 0 );
+    assert( index > 0 );
 
-  return (stack[index-1]);
+    return (stack[index-1].value);
 }
 
 
-void stackPush( unsigned int value )
+void stackPush( unsigned int value, __u64 nano_hex )
 {
-  assert ( index < MAX_ELEMENTS );
+	//printf("push [0x%x] 0x%llx\n", value, nano_hex);
+    assert ( index < MAX_ELEMENTS );
 
-  stack[index] = value;
-  index++;
+    stack[index].value = value;
+	//(高8字节存放秒数；低8字节存放纳秒)==>纳秒；
+    stack[index].ns = (nano_hex >> 32) * 1000000000 + (nano_hex & 0xffffffff);
+	//printf("push        [%d] ns=%lld\n", index, stack[index].ns);
 
-  return;
+    index++;
+
+    return;
 }
 
 
-unsigned int stackPop( void )
+TPopItem stackPop( __u64 nano_hex )
 {
-  unsigned int value;
 
-  assert( index > 0 );
+    assert( index > 0 );
+    index--;
 
-  index--;
-  value = stack[index];
+	//(高8字节存放秒数；低8字节存放纳秒)==>纳秒；
+    unsigned long long nsPop = (nano_hex >> 32) * 1000000000 + (nano_hex & 0xffffffff);
 
-  return value;
+    unsigned int value = stack[index].value;
+	//printf("pop  [0x%x] 0x%llx\n", value, nano_hex);
+
+	TPopItem item;
+	item.addr = value;
+	item.ns = (nsPop > stack[index].ns) ? nsPop-stack[index].ns : 0;
+	//printf("pop         [%d] df=%llu\n", index, item.ns);
+
+    return item;
 }
 
