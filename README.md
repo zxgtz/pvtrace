@@ -22,6 +22,7 @@ pvtrace exename
 dot -Tjpg graph.dot -o graph.jpg
 
 --------------------------------------------------------------------------------
+![image](https://github.com/zxgtz/pvtrace/assets/4532703/0be0af1f-d3df-445b-8d8a-b393a813c01d)
 20230912:
   - 将函数数目及函数名字符数限制增大，以能处理较大的项目；
   - 正确生成C++函数名；
