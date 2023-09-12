@@ -21,4 +21,9 @@ pvtrace exename
 # Convert the dot graph into a jpeg for visualisation (output is graph.jpg)
 dot -Tjpg graph.dot -o graph.jpg
 
-
+--------------------------------------------------------------------------------
+20230912:
+  - 将函数数目及函数名字符数限制增大，以能处理较大的项目；
+  - 正确生成C++函数名；
+  - 增加进出函数的时刻；
+  - 记录函数执行时间；
